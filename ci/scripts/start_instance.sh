@@ -57,7 +57,7 @@ if [[ "${GEODE_FORK}" != "apache" ]]; then
   IMAGE_FAMILY_PREFIX="${GEODE_FORK}-${SANITIZED_GEODE_BRANCH}-"
 fi
 
-if [[ "${SANITIZED_BUILD_JOB_NAME}" =~ Windows ]]; then
+if [[ "${SANITIZED_BUILD_JOB_NAME}" =~ [Ww]indows ]]; then
   WINDOWS_PREFIX="windows-"
 fi
 
