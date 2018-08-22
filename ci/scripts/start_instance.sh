@@ -117,6 +117,8 @@ else
     sleep 5
   done
 
+  ssh-keygen -N "" -f ${SSHKEY_FILE}
+
   KEY=$( cat ${SSHKEY_FILE} )
 
   winrm -hostname ${INSTANCE_IP_ADDRESS} -username geode -password "${PASSWORD}" \
