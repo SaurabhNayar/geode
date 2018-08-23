@@ -103,7 +103,7 @@ done
 echo "${INSTANCE_INFORMATION}" > instance-data/instance-information
 
 # This extracts the internal IP address for subsequent use
-INSTANCE_IP_ADDRESS=$(echo ${INSTANCE_INFORMATION} | jq -r '.[].networkInterfaces[0].networkIP')
+INSTANCE_IP_ADDRESS=$(echo ${INSTANCE_INFORMATION} | jq -r '.[].networkInterfaces[0].accessConfigs[0].natIP')
 echo "${INSTANCE_IP_ADDRESS}" > "instance-data/instance-ip-address"
 
 if [[ -z "${WINDOWS_PREFIX}" ]]; then
@@ -122,5 +122,6 @@ else
   KEY=$( cat ${SSHKEY_FILE} )
 
   winrm -hostname ${INSTANCE_IP_ADDRESS} -username geode -password "${PASSWORD}" \
+    -https -insecure -port 5986 \
     "powershell -command \"&{ mkdir c:\users\geode\.ssh -force; set-content -path c:\users\geode\.ssh\authorized_keys -encoding utf8 -value '${KEY}' }\""
 fi
