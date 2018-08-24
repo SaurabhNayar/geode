@@ -119,7 +119,7 @@ else
 
   ssh-keygen -N "" -f ${SSHKEY_FILE}
 
-  KEY=$( cat ${SSHKEY_FILE} )
+  KEY=$( cat ${SSHKEY_FILE}.pub )
 
   winrm -hostname ${INSTANCE_IP_ADDRESS} -username geode -password "${PASSWORD}" \
     -https -insecure -port 5986 \
