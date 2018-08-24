@@ -38,7 +38,7 @@ public class ClasspathScanLoadHelper {
   public ClasspathScanLoadHelper(Collection<String> packagesToScan) {
     scanResult = new ClassGraph().whitelistPackages(packagesToScan.toArray(new String[] {}))
         .enableClassInfo()
-        .enableAnnotationInfo().scan();
+        .enableAnnotationInfo().scan(2);
   }
 
   public Set<Class<?>> scanPackagesForClassesImplementing(Class<?> implementedInterface,
