@@ -84,7 +84,7 @@ while true; do
       --subnet="heavy-lifters" \
       --image-family="${IMAGE_FAMILY_PREFIX}${WINDOWS_PREFIX}geode-builder" \
       --image-project=${PROJECT} \
-      --boot-disk-size=100GB \
+      --boot-disk-size=120GB \
       --boot-disk-type=pd-ssd \
       --labels="${LABELS}" \
       --format=json)
